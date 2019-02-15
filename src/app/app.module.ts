@@ -8,19 +8,28 @@ import { TeacherComponent } from './page/teacher/teacher.component';
 import { ParentComponent } from './page/parent/parent.component';
 import { ExternalComponent } from './page/external/external.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
+import { CommonService } from './service/common.service';
+import { CommonPipe } from './pipe/common.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     StudentComponent,
     TeacherComponent,
     ParentComponent,
-    ExternalComponent
+    ExternalComponent,
+    CommonPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    CommonService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

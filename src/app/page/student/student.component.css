@@ -1,0 +1,23 @@
+.loading {
+  display: none;
+}
+
+.card p.done {
+  display: none;
+}
+
+.card.submited p.yet {
+  display: none;
+}
+
+.card.submited p.done {
+  display: flex;
+}
+
+.card {
+  display: none;
+}
+
+.card.is-active {
+  display: block;
+}

@@ -1,10 +1,10 @@
-<section class="hero is-info is-large">
+<section class="hero is-info is-large" [ngClass]="{'loading': isLoading}">
   <div class="hero-head">
     <nav class="navbar">
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+            <p class="subtitle is-4">Blockchain</p>
           </a>
           <span class="navbar-burger burger" data-target="navbarMenuHeroB">
             <span></span>
@@ -38,14 +38,73 @@
     <nav class="tabs is-boxed is-fullwidth">
       <div class="container">
         <ul>
-          <li class="is-active">
-            <a>Last Date</a>
+          <li [ngClass]="{'is-active': showLastDate}">
+            <a (click)="selectLastDate()">Last Date</a>
           </li>
-          <li>
-            <a>History</a>
+          <li [ngClass]="{'is-active': showHistory}">
+            <a (click)="selectHistory()">History</a>
           </li>
         </ul>
       </div>
     </nav>
   </div>
 </section>
+<div class="card" [ngClass]="{'submited': isSubmited, 'is-active': showLastDate}">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{lastDate}}
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <h4 class="subtitle is-4"><i class="fas fa-bed"></i></h4>
+      <table class="table is-striped is-fullwidth">
+        <tbody>
+          <tr>
+            <td><strong>Start</strong></td>
+            <td class="has-text-right">{{startTime | dateToTime}}</td>
+          </tr>
+          <tr>
+            <td><strong>End</strong></td>
+            <td class="has-text-right">{{endTime | dateToTime}}</td>
+          </tr>
+          <tr>
+            <td><strong>Duration</strong></td>
+            <td class="has-text-right">{{sleepDuration}} min</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="content">
+        <h4 class="subtitle is-4"><i class="fas fa-walking"></i></h4>
+        <table class="table is-striped is-fullwidth">
+          <tbody>
+            <tr>
+              <td><strong>Calories Out</strong></td>
+              <td class="has-text-right">{{caloriesOut}} kcal</td>
+            </tr>
+            <tr>
+              <td><strong>Active Minutes</strong></td>
+              <td class="has-text-right">{{activeMinutes}} min</td>
+            </tr>
+            <tr>
+              <td><strong>Steps</strong></td>
+              <td class="has-text-right">{{steps}} steps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <footer class="card-footer">
+    <p class="card-footer-item yet" (click)="submit()" style="color:#3273dc;cursor:pointer">Submit</p>
+    <p class="card-footer-item done" style="color:#dce9ff;cursor:default">Submited</p>
+  </footer>
+</div>
+<div class="card" [ngClass]="{'submited': isSubmited, 'is-active': showHistory}">
+    <div class="card-content">
+      <div class="content">
+        <p>{{history}}</p>
+      </div>
+  </div>
+  
+  
