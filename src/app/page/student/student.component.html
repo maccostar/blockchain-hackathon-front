@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <p class="subtitle is-4">healMES</p>
+            <p class="subtitle is-4">HealMES</p>
           </a>
           <span class="navbar-burger burger" data-target="navbarMenuHeroB">
             <span></span>
@@ -100,10 +100,46 @@
     <p class="card-footer-item done" style="color:#dce9ff;cursor:default">Submited</p>
   </footer>
 </div>
-<div class="card" [ngClass]="{'submited': isSubmited, 'is-active': showHistory, 'loading': isLoading}">
+<div class="card" [ngClass]="{'submited': isSubmited, 'is-active': showHistory, 'loading': isLoading, 'loading-transaction': isLoadingTransaction}">
     <div class="card-content">
       <div class="content">
-        <p>{{history}}</p>
+        <article class="message" *ngFor="let h of history; let i = index">
+          <div class="message-header">
+            <p>{{h.date}}</p>
+          </div>
+          <div class="message-body">
+          <table class="table is-fullwidth">
+            <tbody>
+              <tr><td><strong>Start</strong></td>
+                <td class="has-text-right">{{h.start | dateToTime}}</td>
+              </tr>
+              <tr>
+                <td><strong>End</strong></td>
+                <td class="has-text-right">{{h.end | dateToTime}}</td>
+              </tr>
+              <tr>
+                <td><strong>Duration</strong></td>
+                <td class="has-text-right">{{h.duration}} min</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="table is-fullwidth">
+              <tbody>
+                <tr><td><strong>Calory</strong></td>
+                  <td class="has-text-right">{{h.calory}} kcal</td>
+                </tr>
+                <tr>
+                  <td><strong>Active</strong></td>
+                  <td class="has-text-right">{{h.active}} min</td>
+                </tr>
+                <tr>
+                  <td><strong>Steps</strong></td>
+                  <td class="has-text-right">{{h.duration}} steps</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
       </div>
   </div>
   

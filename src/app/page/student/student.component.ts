@@ -14,6 +14,7 @@ export class StudentComponent implements OnInit {
   private history : string = "";
   private isSubmited : boolean = false;
   private isLoading : boolean = true;
+  private isLoadingTransaction : boolean = true;
   private showLastDate : boolean = true;
   private showHistory : boolean = false;
   private userName : string = "";
@@ -58,16 +59,17 @@ export class StudentComponent implements OnInit {
 
         // Development
         this.userName = "KS";
-        this.startTime = "2017-04-01T23:58:30.000";
-        this.endTime = "2017-04-01T23:58:30.000";
-        this.sleepDuration = "200";
-        this.caloriesOut = "2000";
-        this.activeMinutes = "30";
-        this.steps = "2000";
+        this.startTime = "2019-02-15T00:14:00.000";
+        this.endTime = "2019-02-15T06:41:30.000";
+        this.sleepDuration = "387";
+        this.caloriesOut = "2531";
+        this.activeMinutes = "33";
+        this.steps = "7313";
         this.isLoading = false;
         this.commonService.getTransaction({}).then(
           (res: any) => {
-            this.history = JSON.stringify(res);
+            this.history = res.filter(r => r.name == this.userName);;
+            this.isLoadingTransaction = false;
           }
         )
     } else {
@@ -104,11 +106,11 @@ export class StudentComponent implements OnInit {
       duration: this.sleepDuration,
       calory: this.caloriesOut,
       active: this.activeMinutes,
-      steps: this.steps
+      steps: this.steps,
+      point: this.point
     }).then(
       (res: any) => {
         if (res.message == "SUCCESS") {
-          console.log(res);
           this.isSubmited = true;
         }
       }

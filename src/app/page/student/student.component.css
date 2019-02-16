@@ -1,5 +1,9 @@
 .loading {
-  display: none;
+  display: none !important;
+}
+
+.loading-transaction {
+  display: none !important;
 }
 
 .card p.done {
