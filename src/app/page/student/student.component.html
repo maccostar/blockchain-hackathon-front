@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <p class="subtitle is-4">Blockchain</p>
+            <p class="subtitle is-4">healMES</p>
           </a>
           <span class="navbar-burger burger" data-target="navbarMenuHeroB">
             <span></span>
@@ -49,7 +49,7 @@
     </nav>
   </div>
 </section>
-<div class="card" [ngClass]="{'submited': isSubmited, 'is-active': showLastDate}">
+<div class="card" [ngClass]="{'submited': isSubmited, 'is-active': showLastDate, 'loading': isLoading}">
   <header class="card-header">
     <p class="card-header-title">
       {{lastDate}}
@@ -100,7 +100,7 @@
     <p class="card-footer-item done" style="color:#dce9ff;cursor:default">Submited</p>
   </footer>
 </div>
-<div class="card" [ngClass]="{'submited': isSubmited, 'is-active': showHistory}">
+<div class="card" [ngClass]="{'submited': isSubmited, 'is-active': showHistory, 'loading': isLoading}">
     <div class="card-content">
       <div class="content">
         <p>{{history}}</p>
